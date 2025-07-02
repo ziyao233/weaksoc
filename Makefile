@@ -1,6 +1,6 @@
 WEAKCORE	?=
 
-SRCS		= weaksoc.v $(WEAKCORE)
+SRCS		= weaksoc.v $(WEAKCORE) eno_uart.v
 
 weaksoc.bit: weaksoc.config
 	ecppack --svf weaksoc.svf weaksoc.config weaksoc.bit
@@ -13,7 +13,7 @@ weaksoc.json: $(SRCS)
 	yosys -p "synth_ecp5 -top weaksoc -json weaksoc.json" $(SRCS)
 
 upload: weaksoc.bit
-	openFPGALoader --cable cmsisdap weaksoc.bit -r
+	openFPGALoader --cable cmsisdap weaksoc.bit
 
 clean:
 	rm -f weaksoc.json weaksoc.config weaksoc.svf weaksoc.bit
