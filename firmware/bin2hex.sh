@@ -1,3 +1,3 @@
 #!/bin/sh
 
-hexdump -e '1/4 "%08x\n"' $1
+hexdump -ve '1/4 "%08x\n"' $1
